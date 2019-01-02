@@ -1,16 +1,6 @@
 <!DOCTYPE html>
 <html lang="ko" dir="ltr">
   <head>
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-131397158-1"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-
-      gtag('config', 'UA-131397158-1');
-    </script>
-
     <!-- 호환성 관련 구문 -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -86,7 +76,7 @@
         <div id="login">로그인</div>
         <div id="lotext" class="text-center">
           <br />
-          <form class="center form" action="./function/process_log.php" method="post">
+          <form class="center form" action="./function/login.php" method="post">
             <input type="text" class="form-control form"name="id" placeholder="아이디" required>
             <input type="password" class="form-control form"name="pw" placeholder="비밀번호" required>
             <div class="checkbox">
@@ -105,7 +95,7 @@
         <div id="login">회원가입</div>
         <div id="lotext">
           <br />
-          <form class="center form" action="./function/process_reg.php" method="post">
+          <form class="center form" action="./function/register.php" method="post">
             <input type="text" class="form-control form" name="id" placeholder="아이디" required>
             <input type="password" class="form-control form" autocomplete="password" name="pw" placeholder="비밀번호" required>
             <input type="password" class="form-control form" autocomplete="password" name="pwr" placeholder="비밀번호 확인" required>
