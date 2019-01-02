@@ -1,6 +1,9 @@
 <?php
   // 새폴더 생성 (Ajax)
-  $dir = '../file'.$_POST['currentDir'].'/'.$_POST['folderName'];
-  mkdir($dir, 0777, true);
-
-  copy("../file/index.php", $dir."/index.php");
+  try {
+      $dir = '../file/'.$_POST['folderName'];
+      mkdir($dir, 0777, true);
+      echo json_encode(["result"=>1, "folder"=>$_POST['folderName']]);
+  } catch (\Exception $e) {
+      echo json_encode(["result"=>0, "error"=>$e]);
+  }
