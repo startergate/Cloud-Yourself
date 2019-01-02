@@ -1,5 +1,6 @@
 <?php
   // 새폴더 생성 (Ajax)
+  header('Content-Type: application/json');
   try {
       $dir = '../file/'.$_POST['folderName'];
       mkdir($dir, 0777, true);

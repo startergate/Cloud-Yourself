@@ -1,4 +1,5 @@
 <?php
+  header('Content-Type: application/json');
   $dir = '../file/'.$_POST['folderName'];
   try {
       $files = array_diff(scandir($dir), array('.','..'));
