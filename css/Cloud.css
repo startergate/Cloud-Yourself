@@ -1,0 +1,107 @@
+/* #gnb.gnb-one .gnb-my-li, #gnb.gnb_one_small .gnb_my_li {
+    margin-right: 0;
+    margin-left: 0;  
+} */
+.profile {
+    position: fixed;
+    right: 25px;
+    top: 14px;
+    z-index: 1;
+}
+
+a.gnb-my:hover .gnb-name {
+    text-decoration: underline; 
+}
+
+.bar {
+    background-color: #673ab7;
+    position: fixed;
+    z-index: 0;
+    width: 100vw;
+}
+
+#gnb{
+    text-align:right !important;
+    font-size: 12px;
+    letter-spacing: 0 !important;
+    line-height: 0 !important;
+}
+
+#gnb-my-layer{
+    margin: 0 0 0 0;
+    padding: 0 0 0 0;
+    border: 0;
+    float: right;    
+}
+
+#gnb.gnb-one .gnb-my-li .gnb-my .gnb-name {
+    margin: 0 0 0 4px;
+}
+
+#gnb-my .gnb-name {
+    padding-left: 5px;
+    display: inline-block;
+    height: 23px;
+    line-height: 28px;
+    vertical-align: top;
+    font-size: 11px;
+}
+
+#gnb a{
+    cursor: pointer;
+}
+
+.login-group {
+    white-space: nowrap;
+}
+
+#header h1 {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 0;
+    height: 0;
+    padding: 16px 0px 0px 19px;
+    z-index: 30;
+    overflow: hidden;
+}
+
+h1, body{
+    margin: 0;
+    padding: 0;
+    text-decoration: white;
+}
+
+/*body {
+    font-family: '나눔고딕' ,NanumGothic,Dotum,'돋움',Helvetica,"Apple SD Gothic Neo", sans-serif;
+    font-size: 12px;
+}*/
+
+#header h1 DriveYourself {
+    background-position: -65px -113px;
+    width: 58px;
+    height: 23px;
+    margin-right: 2px;
+}
+
+#header h1
+a {
+    display: block;
+    float: center;
+
+}
+
+
+.blind {
+    display:table; margin-left:auto; margin-right:auto;
+    font-size: 35px;
+    font-weight: 900;
+    color: white;
+    clip: rect(0 0 0 0);
+    padding-top:5px;
+    padding-bottom:5px;
+}
+
+a{
+    text-decoration: none;
+}
