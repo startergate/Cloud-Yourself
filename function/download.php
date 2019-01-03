@@ -1,6 +1,6 @@
 <?php
   // 다운로드 (Ajax)
-  $dir = "../file/".$_POST['fileName'];
+  $dir = '../file/'.$_POST['fileName'];
   $check = file_exists($dir);
   $isFile = is_file($dir);
   if ($check && $isFile) {
@@ -10,7 +10,7 @@
       }
       function utf2euc($str)
       {
-          return iconv("UTF-8", "cp949//IGNORE", $str);
+          return iconv('UTF-8', 'cp949//IGNORE', $str);
       }
       function is_ie()
       {
@@ -25,6 +25,7 @@
           } // IE11
           return false;
       }
+
       try {
           $filesize = filesize($dir);
           $filename = mb_basename($dir);
@@ -32,18 +33,18 @@
               $filename = utf2euc($dir);
           }
 
-          header("Pragma: public");
-          header("Expires: 0");
-          header("Content-Type: application/octet-stream");
+          header('Pragma: public');
+          header('Expires: 0');
+          header('Content-Type: application/octet-stream');
           header("Content-Disposition: attachment; filename=\"$filename\"");
-          header("Content-Transfer-Encoding: binary");
+          header('Content-Transfer-Encoding: binary');
           header("Content-Length: $filesize");
           readfile($dir);
       } catch (\Exception $e) {
-          header("Content-Type: application/json");
+          header('Content-Type: application/json');
           echo json_encode(['result'=>-1, 'error'=>$e]);
       }
   } else {
-      header("Content-Type: application/json");
+      header('Content-Type: application/json');
       echo json_encode(['result'=>0, 'error'=>'File Does Not Exist.']);
   }
