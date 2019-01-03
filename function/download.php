@@ -2,7 +2,8 @@
   // 다운로드 (Ajax)
   $dir = "../file/".$_POST['fileName'];
   $check = file_exists($dir);
-  if ($check) {
+  $isFile = is_file($dir);
+  if ($check && $isFile) {
       function mb_basename($path)
       {
           return end(explode('/', $path));
@@ -25,11 +26,10 @@
           return false;
       }
       try {
-          $filepath = $dir;
-          $filesize = filesize($filepath);
-          $filename = mb_basename($filepath);
+          $filesize = filesize($dir);
+          $filename = mb_basename($dir);
           if (is_ie()) {
-              $filename = utf2euc($filename);
+              $filename = utf2euc($dir);
           }
 
           header("Pragma: public");
@@ -38,11 +38,12 @@
           header("Content-Disposition: attachment; filename=\"$filename\"");
           header("Content-Transfer-Encoding: binary");
           header("Content-Length: $filesize");
-
-          readfile($filepath);
+          readfile($dir);
       } catch (\Exception $e) {
-          echo json_encode(['result'=>0, 'error'=>'File Does Not Exist.']);
+          header("Content-Type: application/json");
+          echo json_encode(['result'=>-1, 'error'=>$e]);
       }
   } else {
+      header("Content-Type: application/json");
       echo json_encode(['result'=>0, 'error'=>'File Does Not Exist.']);
   }
