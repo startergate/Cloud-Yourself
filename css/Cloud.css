@@ -106,16 +106,22 @@ a{
     text-decoration: none;
 }
 
-.vl {
-    height: calc(100vh - 57px);
-    margin-left: -3px;
-    padding: 5px 1px 2px 3px;
+@media (min-width: 992px) {   
+    .nav {
+        height: calc(100vh - 57px);
+        width: 15%;
+        border-right: 1px solid black;
+    }
+    .filelist {
+        height: calc(100vh - 57px);
+        margin-left: -3px;
+        padding: 5px 1px 2px 20px;
+    }
 }
-
-.nav {
-    height: calc(100vh - 57px);
-    width: 15%;
-    border-right: 1px solid black;
+@media (max-width: 991.98px) {
+    .filelist {
+        margin-left:-15%;
+    }
 }
 
 .barPlaceholder {

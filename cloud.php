@@ -43,7 +43,7 @@
         <div class="barPlaceholder"></div>
         <div class="container">
             <div class="nav"></div>
-            <div class="vl">
+            <div class="filelist">
                 <input type="checkbox" name="chk_info" value="All check"> 
             </div>
         </div>
