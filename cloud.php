@@ -42,10 +42,61 @@
         </div> -->
         <div class="barPlaceholder"></div>
         <div class="container">
-            <div class="nav"></div>
-            <div class="filelist">
-                <input type="checkbox" name="chk_info" value="All check"> 
+            <div class="nav">
+                <!-- 화면 작아졌을때 버튼 나오도록 추가할 것(onedrive.live.com 참고) -->
+                <div class="dropdown">
+                    <p onclick="myFunction()" class="dropbtn" style="font-size: 25px;">사진</p>
+                    <div id="myDropdown" class="dropdown-content">
+                        <a href="#" style="font-size: 15px;">모든사진</a>
+                        <a href="#" style="font-size: 15px;">폴더</a>
+                    </div>  
+                    <p class="dropbtn" style="font-size: 25px;">문서</p>
+                </div>
             </div>
+            <div class="filelist">
+                <input type="checkbox" name="chk_info" value="All check" style="width:15px; height:15px;"> 
+                <input type="button" name="올리기" value="올리기" style="width: 63; height: 30;">
+                <input type="button" name="내리기" value="내려받기"style="width: 79; height: 30;">
+                <input type="button" name="삭제" value="삭제" style="width: 63; height: 30">
         </div>
+        <div>
+
+        </div>
+            <script>
+                /* When the user clicks on the button,
+                toggle between hiding and showing the dropdown content */
+                function myFunction() {
+                    var dd = document.getElementById("myDropdown")
+                    dd.classList.toggle("show")
+                    dd.style.animationName = "dropdownOpen"
+                    dd.style.animationDuration = "1s"
+                }
+
+                // Close the dropdown menu if the user clicks outside of it
+                window.onclick = function(event) {
+                    if (!event.target.matches('.dropbtn')) {
+
+                        var dropdowns = document.getElementsByClassName("dropdown-content");
+                        var i;
+                        for (i = 0; i < dropdowns.length; i++) {
+                            var openDropdown = dropdowns[i];
+                            if (openDropdown.classList.contains('show')) {
+                                openDropdown.style.animationName = ""
+                                openDropdown.style.animationDuration = ""
+
+                                
+                                openDropdown.style.animationName = "dropdownOpen"
+                                openDropdown.style.animationDuration = "1s"
+                                openDropdown.style.animationDirection = "reverse"
+                                setTimeout(() => {
+                                    openDropdown.classList.remove('show');
+                                }, 1000);
+
+                                
+                        }
+                    }
+                }
+            }
+            </script>
     </body>
 </html>
