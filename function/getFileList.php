@@ -7,7 +7,7 @@
       $filelist = scandir($dir);
       $fileElements = [];
       foreach ($filelist as $file) {
-          if ($file === '.' || $file === '..') {
+          if ($file === '.' || $file === '..' || $file === '.default') {
               continue;
           }
           if (is_dir("$dir/$file")) {
