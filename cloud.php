@@ -42,7 +42,7 @@
         </div> -->
         <div class="barPlaceholder"></div>
         <div class="container">
-            <div class="nav">
+            <div class="nav whiteBack">
                 <!-- 화면 작아졌을때 버튼 나오도록 추가할 것(onedrive.live.com 참고) -->
                 <div class="dropdown">
                     <p onclick="myFunction()" class="dropbtn" style="font-size: 25px;">사진</p>
@@ -53,50 +53,74 @@
                     <p class="dropbtn" style="font-size: 25px;">문서</p>
                 </div>
             </div>
-            <div class="filelist">
+            <div class="optionSelector whiteBack">
                 <input type="checkbox" name="chk_info" value="All check" style="width:15px; height:15px;"> 
                 <input type="button" name="올리기" value="올리기" style="width: 63; height: 30;">
                 <input type="button" name="내리기" value="내려받기"style="width: 79; height: 30;">
                 <input type="button" name="삭제" value="삭제" style="width: 63; height: 30">
-        </div>
-        <div>
-
-        </div>
+            </div>
+            <div class="file"> 
+                <div class="filelist">
+                    <div class="fileSelector" id="file0" onclick="fileSelect('file0')">
+                        <img src="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/foldericons/folder-large_frontplate_thumbnail.svg">
+                        <br>
+                        <p class="fileName">폴더</p>
+                    </div>
+                    
+                </div>
+            </div>
             <script>
+                var pictureDropdownStatement;
                 /* When the user clicks on the button,
                 toggle between hiding and showing the dropdown content */
                 function myFunction() {
                     var dd = document.getElementById("myDropdown")
-                    dd.classList.toggle("show")
-                    dd.style.animationName = "dropdownOpen"
-                    dd.style.animationDuration = "1s"
+                    if (pictureDropdownStatement != "open") {
+                        dd.classList.toggle("show")
+                        dd.style.animationName = "dropdownOpen"
+                        dd.style.animationDuration = "1s"
+                        pictureDropdownStatement = "open";
+                    } else {
+                        dropdownClose(dd)
+                        pictureDropdownStatement = "close";
+                    }
                 }
 
                 // Close the dropdown menu if the user clicks outside of it
                 window.onclick = function(event) {
                     if (!event.target.matches('.dropbtn')) {
-
                         var dropdowns = document.getElementsByClassName("dropdown-content");
                         var i;
                         for (i = 0; i < dropdowns.length; i++) {
                             var openDropdown = dropdowns[i];
                             if (openDropdown.classList.contains('show')) {
-                                openDropdown.style.animationName = ""
-                                openDropdown.style.animationDuration = ""
-
-                                
-                                openDropdown.style.animationName = "dropdownOpen"
-                                openDropdown.style.animationDuration = "1s"
-                                openDropdown.style.animationDirection = "reverse"
-                                setTimeout(() => {
-                                    openDropdown.classList.remove('show');
-                                }, 1000);
-
-                                
+                                dropdownClose(openDropdown)
+                                pictureDropdownStatement = "close";
+                            }
                         }
                     }
                 }
-            }
+
+                var dropdownClose = function(openDropdown) {
+                    openDropdown.style.animationName = ""
+                    openDropdown.style.animationDuration = ""
+                    setTimeout(() => {
+                        openDropdown.style.animationName = "dropdownOpen"
+                        openDropdown.style.animationDuration = "1s"
+                        openDropdown.style.animationDirection = "reverse"
+                        
+                        setTimeout(() => {
+                            openDropdown.classList.remove('show');
+                            openDropdown.style.animationName = ""
+                            openDropdown.style.animationDuration = ""
+                            openDropdown.style.animationDirection = ""
+                        }, 1000);
+                    }, 10);
+                }
+                
+                var fileSelect = function(fileName) {
+                    document.getElementById(fileName).classList.toggle("selectedFile");
+                }
             </script>
     </body>
 </html>

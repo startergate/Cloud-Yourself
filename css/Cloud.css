@@ -2,6 +2,10 @@
     margin-right: 0;
     margin-left: 0;  
 } */
+body {
+    height: 100vh;
+}
+
 .profile {
     position: fixed;
     right: 25px;        
@@ -16,7 +20,6 @@ a.gnb-my:hover .gnb-name {
 .bar {
     background-color: #673ab7;
     position: fixed;
-    z-index: 0;
     z-index: 99999;
     width: 100vw;
 }
@@ -106,28 +109,39 @@ a{
     text-decoration: none;
 }
 
-.filelist {
+.optionSelector {
     position: fixed;
-    left: 225px;
+    z-index: 999;
     top: 57px;
-    padding: 15px 15px 0px 30px;
+    padding: 15px;
+    width: 100%;
+    border-bottom: 2px solid silver;
 }
 .nav {
-    height: 100vh;
-    padding: 20px 1px 2px 30px;
+    position:fixed;
+    z-index: 9999;
+    height: 100%;
+    padding: 20px 0px 0px 30px;
     font-size: 25px;
 }
 
 @media (min-width: 900px) {   
     .nav {
         width: 225px;
-        border-right: 1px solid black;
+        border-right: 2px solid silver;
+    }
+    .optionSelector {
+        left: 255px;
+    }
+    .file {
+        padding-left: 255px;
     }
 }
 
-@media (max-width: 800px) {
+@media (max-width: 899.98px) {
     .nav {
         margin-left: -15%;
+        display: none;
     }
 }
 
@@ -143,7 +157,7 @@ a{
 .dropbtn {
     background-color: none;
     color: black;
-    padding: 20px;
+    padding: 0px 20px;
     font-size: 20px;
     border: none;
     cursor: pointer;
@@ -167,6 +181,7 @@ a{
     background-color: #f9f9f9;
     min-width: 160px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    margin-top: -16px;
 }
 
 /* Links inside the dropdown */
@@ -175,7 +190,6 @@ a{
     padding: 12px 16px;
     text-decoration: none;
     display: block;
-    margin-left: -174px;
 }
 
 /* Change color of dropdown links on hover */
@@ -193,6 +207,38 @@ a{
 /* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
 .show {display:block;}
 
+.file {
+    position: absolute;
+    top: 0px;
+    bottom: 0px;
+    padding-top: 122.8px;
+}
+
+.filelist {
+    padding: 20px 32px 0px 32px;
+    display: flex;
+}
+
+.fileSelector {
+    text-align: center;
+    width: 170px;
+    height: 140px;
+    padding-top: 6px;
+}
+
+.fileName {
+    margin-top: 16px;
+    margin-bottom: 10px;
+}
+
+.selectedFile {
+    background-color: #DCDCDC;
+    border: 2px solid #673ab7;
+}
+
+.whiteBack {
+    background-color: white;
+}
 
 
 /*.menubar{
