@@ -235,8 +235,22 @@ a{
 }
 
 .fileName {
-    margin-top: 16px;
+    margin-top: 0px;
     margin-bottom: 10px;
+}
+
+.fileIcon {
+    margin: 0 auto;
+    height: 90px;
+    width: 120px;
+    background-image: url("https://marketplace.canva.com/MAB7OE9Jppw/1/thumbnail_large/canva-folder-file-yellow-document-info-icon.-vector-graphic-MAB7OE9Jppw.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size:contain;
+}
+
+.dir {
+  background-image: url("https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/foldericons/folder-large_frontplate_thumbnail.svg");
 }
 
 .selectedFile {

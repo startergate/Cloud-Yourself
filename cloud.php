@@ -75,7 +75,7 @@
           <p>파일<span class="root"></span></p>
 
         </div>
-        <div class="filelist">
+        <div class="filelist" id="listChanger">
           <div class="fileSelector" id="file0" onclick="fileSelect('file0')">
             <img src="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/foldericons/folder-large_frontplate_thumbnail.svg">
             <br>
@@ -103,7 +103,7 @@
           </div>
         </div>
       </div>
-      <div class="popup">
+      <div class="popup" style="display:none">
         <div class="deletePopup">
             <div style="position: relative;">
                 <span class="Xbutton">X </span>
@@ -117,6 +117,7 @@
       }
 
       var listSetter = function (dir) {
+        root = dir
         document.getElementsByClassName("root")[0].innerHTML = '/'+dir;
         $.ajax({
           url: './function/getFileList.php',
@@ -124,7 +125,15 @@
           dataType: 'json',
           data: {folderName: dir},
           success: function (data) {
-
+            var output = '';
+            for (var i = 0; i < data.data.length; i++) {
+              output += `<div class="fileSelector" id="file${i}" onclick="fileSelect('file${i}')" target="${data.data[i].name}">
+                <div class="fileIcon ${data.data[i].type}"></div>
+                <br>
+                <p class="fileName">${data.data[i].name}</p>
+              </div>`
+            }
+            document.getElementById("listChanger").innerHTML = output;
           }
         })
         .done(function() {
@@ -136,6 +145,28 @@
         .always(function() {
           console.log("complete");
         });
+      }
+
+      var folderAdder = function(dir, name) {
+        $.ajax({
+          url: './function/newFolder.php',
+          type: 'POST',
+          dataType: 'json',
+          data: {folderName: dir+name},
+          success: function (data) {
+            console.log(data);
+          }
+        })
+        .done(function() {
+          console.log("success");
+        })
+        .fail(function() {
+          console.log("error");
+        })
+        .always(function() {
+          console.log("complete");
+        });
+
       }
 
       var pictureDropdownStatement;
