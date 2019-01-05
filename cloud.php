@@ -75,33 +75,7 @@
           <p>파일<span class="root"></span></p>
 
         </div>
-        <div class="filelist" id="listChanger">
-          <div class="fileSelector" id="file0" onclick="fileSelect('file0')">
-            <img src="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/foldericons/folder-large_frontplate_thumbnail.svg">
-            <br>
-            <p class="fileName">폴더</p>
-          </div>
-          <div class="fileSelector" id="file1" onclick="fileSelect('file1')">
-            <img src="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/foldericons/folder-large_frontplate_thumbnail.svg">
-            <br>
-            <p class="fileName">폴더</p>
-          </div>
-          <div class="fileSelector" id="file2" onclick="fileSelect('file2')">
-            <img src="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/foldericons/folder-large_frontplate_thumbnail.svg">
-            <br>
-            <p class="fileName">폴더</p>
-          </div>
-          <div class="fileSelector" id="file3" onclick="fileSelect('file3')">
-            <img src="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/foldericons/folder-large_frontplate_thumbnail.svg">
-            <br>
-            <p class="fileName">폴더</p>
-          </div>
-          <div class="fileSelector" id="file4" onclick="fileSelect('file4')">
-            <img src="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/foldericons/folder-large_frontplate_thumbnail.svg">
-            <br>
-            <p class="fileName">폴더</p>
-          </div>
-        </div>
+        <div class="filelist" id="listChanger"></div>
       </div>
       <div class="popup" style="display:none">
         <div class="deletePopup">
@@ -135,15 +109,6 @@
             }
             document.getElementById("listChanger").innerHTML = output;
           }
-        })
-        .done(function() {
-          console.log("success");
-        })
-        .fail(function() {
-          console.log("error");
-        })
-        .always(function() {
-          console.log("complete");
         });
       }
 
