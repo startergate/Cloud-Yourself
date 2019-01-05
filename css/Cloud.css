@@ -248,7 +248,29 @@ a{
     background-color: white;
 }
 
+.popup{
+    position :fixed;
+    z-index: 9999998;
+    background-color: rgba(0,0,0,0.5);
+    height: 100vh;
+    width: 100vw;
+    border: solid 1px black;
+    margin: -1px;
+}
+.deletePopup {
+    width: 170px;
+    height: 180px;
+    z-index: 9999999;
+    background-color: white;
+    margin: 25% auto;
 
+}
+
+.Xbutton {
+    position: absolute;
+    top: 6px;
+    right: 6px;
+}
 /*.menubar{
     list-style: none;
     padding-left: 0px;

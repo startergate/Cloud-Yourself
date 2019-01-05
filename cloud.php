@@ -91,6 +91,13 @@
           </div>
         </div>
       </div>
+      <div class="popup">
+        <div class="deletePopup">
+            <div style="position: relative;">
+                <span class="Xbutton">X </span>
+            </div>
+        </div>
+    </div>
     </div>
     <script>
       window.onload = function () {
