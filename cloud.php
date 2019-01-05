@@ -117,13 +117,13 @@
       }
 
       var listSetter = function (dir) {
-        doument.getElementsByClassName("root")[0].innerHTML = '/'+dir;
+        document.getElementsByClassName("root")[0].innerHTML = '/'+dir;
         $.ajax({
           url: './function/getFileList.php',
           type: 'POST',
           dataType: 'json',
           data: {folderName: dir},
-          success: function () {
+          success: function (data) {
 
           }
         })
