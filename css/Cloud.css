@@ -134,8 +134,7 @@ a{
         left: 255px;
     }
     .file {
-        left: 255px;
-        width: 100%;
+        padding-left: 255px;
     }
 }
 
