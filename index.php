@@ -48,7 +48,7 @@
     <div id="index" class="cover full-window">
       <div class="col-sm-12 larger">
         <p class='text-center'>
-          <strong class="indexTitle domi">DoNote</strong>
+          <strong class="indexTitle domi">Cloud Yourself</strong>
         </p>
         <div class="control">
           <p class='text-center'>
@@ -61,7 +61,7 @@
               }
               if (!empty($_SESSION['pid'])) {
                   echo "<div class='white'>".$_SESSION['nickname'].'님, 돌아오셨군요!</div>';
-                  echo "<script type=\"text/javascript\">setTimeout(\"location.href = './note.php'\", 5000);</script>";
+                  echo "<script type=\"text/javascript\">setTimeout(\"location.href = './cloud.php'\", 5000);</script>";
                   echo "<div style='color:white'>곧 리다이렉트됩니다.</div>";
               } else {
                   echo "<button class='btn btn-light btn-lg' id='loginBtn1'>SID로 로그인</button>";
