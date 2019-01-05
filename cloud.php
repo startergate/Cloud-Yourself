@@ -1,3 +1,11 @@
+<?php
+  require './lib/sidUnified.php';
+  $SID = new SID("cloudyourself");
+  $SID->loginCheck('./');
+
+  // Select Profile Image
+  $profileImg = $SID->profileGet($_SESSION['pid'], '.');
+?>
 <html>
   <head>
     <meta charset="utf-8">
@@ -10,16 +18,16 @@
   <body>
     <div class="bar">
       <h1>
-        <a class="Drive Yourself" href="Cloud.html">
+        <a class="Cloud Yourself" href="Cloud.html">
           <span class="blind">Cloud Yourself</span>
         </a>
       </h1>
       <li id = "gnb-my-layer"  class="gnb-my-li, profile" style="display: inline-block;">
         <div id = "gnb-my-namebox" class = "gnb-my-namebox">
           <a class="gnb-my" href="javascript:;" onclick="gnbUserLayer.click.Toggle(); return false">
-            <img id="gnb-profile-img" src="https://ssl.pstatic.net/static/common/myarea/myInfo.gif" alt="내 프로필 이미지" style="display: line-block;" width="25" height="25">
+            <img id="gnb-profile-img" src="<?=$profileImg?>" alt="내 프로필 이미지" style="display: line-block;" width="25" height="25">
             <span id="gnb-profile-filter-mask" class="filter-mask" style="display: inline-block;"></span>
-            <span id ="gnb-name1" class="gnb-name" style="font-size: 15spx; color: white">alzkzk</span>
+            <span id ="gnb-name1" class="gnb-name" style="font-size: 15spx; color: white"><?=$_SESSION['nickname']?></span>
             <em class="blind" style="display: none;">내정보 보기</em>
           </a>
         </div>
@@ -63,6 +71,10 @@
         <input type="button" id="deleteBtn" name="삭제" value="삭제" style="width: 63; height: 30">
       </div>
       <div class="file">
+        <div class="filename">
+          <p>파일<span class="root"></span></p>
+
+        </div>
         <div class="filelist">
           <div class="fileSelector" id="file0" onclick="fileSelect('file0')">
             <img src="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/foldericons/folder-large_frontplate_thumbnail.svg">
@@ -101,7 +113,29 @@
     </div>
     <script>
       window.onload = function () {
+        listSetter(root)
+      }
 
+      var listSetter = function (dir) {
+        doument.getElementsByClassName("root")[0].innerHTML = '/'+dir;
+        $.ajax({
+          url: './function/getFileList.php',
+          type: 'POST',
+          dataType: 'json',
+          data: {folderName: dir},
+          success: function () {
+
+          }
+        })
+        .done(function() {
+          console.log("success");
+        })
+        .fail(function() {
+          console.log("error");
+        })
+        .always(function() {
+          console.log("complete");
+        });
       }
 
       var pictureDropdownStatement;
