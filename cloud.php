@@ -1,6 +1,6 @@
 <?php
   require './lib/sidUnified.php';
-  $SID = new SID("cloudyourself");
+  $SID = new SID('cloudyourself');
   $SID->loginCheck('./');
 
   // Select Profile Image
