@@ -7,7 +7,6 @@
   if ($_POST['confirm_login']) {
       if (!empty($_POST['id'])) {
           if (!empty($_POST['pw'])) {
-              $conn = new mysqli($config['host'], $config['duser'], $config['dpw'], $config['dname']);
               $loginToken = $SID->login($_POST['id'], $_POST['pw']);
               if ($loginToken) {
                   if ($_POST['auto'] === 'on') {
