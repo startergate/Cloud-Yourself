@@ -134,6 +134,7 @@ a{
         left: 255px;
     }
     .file {
+        max-width: calc(100vw - 255px);
         padding-left: 255px;
     }
 }
@@ -220,10 +221,12 @@ a{
 .filelist {
     padding: 20px 32px 0px 32px;
     display: flex;
+    flex-wrap: wrap;
 }
 
 .fileSelector {
     text-align: center;
+    min-width: 170px;
     width: 170px;
     height: 140px;
     padding-top: 6px;
