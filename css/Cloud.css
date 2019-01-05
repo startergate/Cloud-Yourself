@@ -134,7 +134,8 @@ a{
         left: 255px;
     }
     .file {
-        padding-left: 255px;
+        left: 255px;
+        width: 100%;
     }
 }
 
@@ -142,6 +143,9 @@ a{
     .nav {
         margin-left: -15%;
         display: none;
+    }
+    .file {
+        width: 100%;
     }
 }
 
@@ -225,6 +229,7 @@ a{
     height: 140px;
     padding-top: 6px;
     border: 2px solid white;
+    margin: 1px;
 }
 
 .fileName {
