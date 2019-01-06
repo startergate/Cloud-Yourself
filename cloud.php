@@ -1,6 +1,6 @@
 <?php
   require './lib/sidUnified.php';
-  $SID = new SID('cloudyourself');
+  $SID = new SID('cloudy');
   $SID->loginCheck('./');
 
   // Select Profile Image
@@ -10,7 +10,7 @@
   <head>
     <meta charset="utf-8">
     <link rel="stylesheet" type="text/css" href="./css/Cloud.css">
-    <title>Cloud Yourself</title>
+    <title>Cloudy</title>
     <script type="text/javascript">
       var root = '/';
     </script>
@@ -18,8 +18,8 @@
   <body>
     <div class="bar">
       <h1>
-        <a class="Cloud Yourself" href="Cloud.html">
-          <span class="blind">Cloud Yourself</span>
+        <a class="Cloudy" href="cloud.php">
+          <span class="blind"><img class="indexImage" src="./static/img/common/cloudy_logo.png" alt="Cloudy"></span>
         </a>
       </h1>
       <li id = "gnb-my-layer"  class="gnb-my-li, profile" style="display: inline-block;">

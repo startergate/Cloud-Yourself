@@ -262,6 +262,10 @@ a{
     background-color: white;
 }
 
+.indexImage {
+  height:47px;
+}
+
 .popup{
     position :fixed;
     z-index: 9999998;

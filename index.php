@@ -19,6 +19,9 @@
       .indexTitle{
         font-size: 6.2vw;
       }
+      .indexImage {
+        height:172px;
+      }
       .imgLocation{
         position: fixed;
         font-size: 10px;
@@ -35,8 +38,8 @@
     <script src='./lib/reCaptchaEnabler.js'></script>
 
     <!-- 페이지 설명 구문 -->
-    <meta name="description" content="Index Page of DoNote - DoNote">
-    <title>DoNote Beta</title>
+    <meta name="description" content="Cloudy Front Page">
+    <title>Cloudy</title>
   </head>
   <body class='bg bge bgImg'>
     <!--[if IE]>
@@ -48,7 +51,7 @@
     <div id="index" class="cover full-window">
       <div class="col-sm-12 larger">
         <p class='text-center'>
-          <strong class="indexTitle domi">Cloud Yourself</strong>
+          <strong class="indexTitle domi"><img class="indexImage" src="./static/img/common/cloudy_logo.png" alt="Cloudy"></strong>
         </p>
         <div class="control">
           <p class='text-center'>

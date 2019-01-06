@@ -5,7 +5,7 @@
       if (!empty($_POST['id'])) {
           if (!empty($_POST['pw'])) {
               $conn = new mysqli($config['host'], $config['duser'], $config['dpw'], $config['dname']);
-              $SID = new SID('donote');
+              $SID = new SID('cloudy');
               if ($_POST['pw'] === $_POST['pwr']) {
                   $_SESSION['temp'] = $_POST['id'];
                   $pid = $SID->register($_POST['id'], $_POST['pw'], $_POST['nickname']);
