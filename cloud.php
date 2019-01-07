@@ -13,6 +13,21 @@
     <title>Cloudy</title>
     <script type="text/javascript">
       var root = '/';
+      if (getParameters('dir')) {
+        root = getParameters('dir')
+      }
+      function getParameters(paramName) {
+        var returnValue
+        var url = location.href
+        var parameters = (url.slice((url.indexOf('?')) + 1, url.length)).split('&')
+        for (var i = 0; i < parameters.length; i++) {
+          var varName = parameters[i].split('=')[0]
+          if (varName.toUpperCase() === paramName.toUpperCase()) {
+            returnValue = parameters[i].split('=')[1]
+            return decodeURIComponent(returnValue)
+          }
+        }
+      }
     </script>
   </head>
   <body>
@@ -73,7 +88,6 @@
       <div class="file">
         <div class="fileV">
           <p>파일<span class="root"></span></p>
-
         </div>
         <div class="filelist" id="listChanger"></div>
       </div>
@@ -118,7 +132,7 @@
             var i;
             for (i = trigger; i < data.data.length+trigger; i++) {
               if (data.data[i-trigger].type === 'dir') {
-                output += `<div class="fileSelector" id="file${i}" target="${data.data[i-trigger].name}">
+                output += `<div class="fileSelector" id="file${i}" target="${data.data[i-save].name}" style="text-align:right;">
                   <input type="checkbox" onclick="fileSelect('file${i}')" style="z-index:99" name="" value="">
                   <div onclick="listSetter('${roots}${data.data[i-trigger].name}/')" style="z-index:98">
                     <div class="fileIcon ${data.data[i-trigger].type}"></div>
@@ -187,31 +201,6 @@
         });
       }
 
-      var fileUploader = function() {
-        var datas = new FormData();
-        datas.append('file', document.getElementById("fileUploadInputPopup").files[0])
-        datas.append('dir', root)
-        $.ajax({
-          url: './function/upload.php',
-          type: 'POST',
-          dataType: 'json',
-          data: datas,
-          contentType:false,
-          cache:false,
-          processData:false
-        })
-        .done(function() {
-          console.log("success");
-        })
-        .fail(function() {
-          console.log("error");
-        })
-        .always(function() {
-          console.log("complete");
-        });
-
-      }
-
       var downloadClicked = function() {
         var target = root + document.getElementsByClassName('selectedFile')[0].getAttribute("target");
         $("#downloader").attr("src","./function/download.php"+"?fileName="+target);
@@ -265,10 +254,13 @@
             <span class="Xbutton" onclick="closePopup()"></span>
           </div>
           <span class="popupHeader">파일을 업로드하세요.</span>
-          <input type="file" name="" id='fileUploadInputPopup' class="filePopupInput" value="">
-          <div class="popupRelative" style="text-align:right;bottom:0px;position:absolute;width:100%">
-            <button type="button" class="cloudyBtn" onclick="fileUploader('${root}')" style="margin: 20px 20px">가즈아아아아아아</button>
-          </div>
+          <form enctype='multipart/form-data' action='./function/upload.php' method='post'>
+            <input type="hidden" name="dir" value="${root}">
+            <input type="file" name="tfile" id='fileUploadInputPopup' class="filePopupInput" value="">
+            <div class="popupRelative" style="text-align:right;bottom:0px;position:absolute;width:100%">
+              <button class="cloudyBtn" style="margin: 20px 20px">가즈아아아아아아</button>
+            </div>
+          </form>
         </div>`
         popup.style.display="block";
       }
