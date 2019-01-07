@@ -169,15 +169,6 @@
             listSetter(root)
             closePopup()
           }
-        })
-        .done(function() {
-          console.log("success");
-        })
-        .fail(function() {
-          console.log("error");
-        })
-        .always(function() {
-          console.log("complete");
         });
       }
 
@@ -193,6 +184,21 @@
               closePopup()
             }
           }
+        });
+      }
+
+      var fileUploader = function() {
+        var datas = new FormData();
+        datas.append('file', document.getElementById("fileUploadInputPopup").files[0])
+        datas.append('dir', root)
+        $.ajax({
+          url: './function/upload.php',
+          type: 'POST',
+          dataType: 'json',
+          data: datas,
+          contentType:false,
+          cache:false,
+          processData:false
         })
         .done(function() {
           console.log("success");
