@@ -18,7 +18,7 @@ a.gnb-my:hover .gnb-name {
 }
 
 .bar {
-    background-color: #673ab7;
+    background-color: #2f4798;
     position: fixed;
     z-index: 99999;
     width: 100vw;
@@ -53,6 +53,10 @@ a.gnb-my:hover .gnb-name {
 
 #gnb a{
     cursor: pointer;
+}
+
+.gnb-name {
+  margin:auto auto;
 }
 
 .login-group {
@@ -103,6 +107,12 @@ a {
     clip: rect(0 0 0 0);
     padding-top:5px;
     padding-bottom:5px;
+}
+
+.titleText {
+  display:inline-block;
+  margin-top: -30px;
+  margin-left: 10px;
 }
 
 a{
@@ -211,6 +221,15 @@ a{
 /* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
 .show {display:block;}
 
+.cloudyBtn {
+  border-radius: 5px;
+  border: 1px solid silver;
+}
+
+.cloudyBtn:hover {
+  background-color: #949494;
+}
+
 .file {
     position: absolute;
     top: 0px;
@@ -247,6 +266,11 @@ a{
   color: silver;
 }
 
+.fileName {
+  margin-top: 0px;
+  margin-bottom: 10px;
+}
+
 .fileIcon {
     margin: 0 auto;
     height: 90px;
@@ -263,7 +287,7 @@ a{
 
 .selectedFile {
     background-color: #DCDCDC !important;
-    border: 2px solid #673ab7 !important;
+    border: 2px solid #2f4798 !important;
 }
 
 .whiteBack {
@@ -284,12 +308,16 @@ a{
     margin: -1px;
 }
 .deletePopup {
-    width: 170px;
+    width: 300px;
     height: 180px;
     z-index: 9999999;
     background-color: white;
     margin: 25vh auto;
 
+}
+
+.popupRelative {
+  position: relative;
 }
 
 .Xbutton {

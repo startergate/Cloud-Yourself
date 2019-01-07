@@ -1,6 +1,6 @@
 <?php
   // 다운로드 (Ajax)
-  $dir = '../file/'.$_POST['fileName'];
+  $dir = '../file/'.$_GET['fileName'];
   $check = file_exists($dir);
   $isFile = is_file($dir);
   if ($check && $isFile) {
@@ -36,15 +36,20 @@
           header('Pragma: public');
           header('Expires: 0');
           header('Content-Type: application/octet-stream');
+          header('Content-Description: File Transfer');
           header("Content-Disposition: attachment; filename=\"$filename\"");
           header('Content-Transfer-Encoding: binary');
           header("Content-Length: $filesize");
+          header('Cache-Control: must-revalidate, post-check=0, pre-check=0');
           readfile($dir);
+          $fp = fopen($dir, "r");
+          fpassthru($fp);
+          fclose($fp);
       } catch (\Exception $e) {
           header('Content-Type: application/json');
           echo json_encode(['result'=>-1, 'error'=>$e]);
       }
   } else {
       header('Content-Type: application/json');
-      echo json_encode(['result'=>0, 'error'=>'File Does Not Exist.']);
+      echo json_encode(['result'=>0, 'error'=>'File Does Not Exist.', 'data'=>$_POST]);
   }

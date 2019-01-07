@@ -19,7 +19,7 @@
     <div class="bar">
       <h1>
         <a class="Cloudy" href="cloud.php">
-          <span class="blind"><img class="indexImage" src="./static/img/common/cloudy_logo.png" alt="Cloudy"></span>
+          <span class="blind"><img class="indexImage" src="./static/img/common/cloudy_logo.png" alt=""><span class="titleText">Cloudy</span></span>
         </a>
       </h1>
       <li id = "gnb-my-layer"  class="gnb-my-li, profile" style="display: inline-block;">
@@ -65,10 +65,10 @@
         </div>
       </div>
       <div class="optionSelector whiteBack">
-        <input type="checkbox" id="allCheckbox" name="chk_info" value="All check" style="width:15px; height:15px;">
-        <input type="button" id="uploadBtn" name="올리기" value="올리기" style="width: 63; height: 30;">
-        <input type="button" id="downloadBtn" name="내리기" value="내려받기"style="width: 79; height: 30;">
-        <input type="button" id="deleteBtn" name="삭제" value="삭제" style="width: 63; height: 30">
+        <input type="button" id="uploadBtn" class="cloudyBtn" name="올리기" onclick="uploadPopup()" value="업로드" style="width: 63; height: 30;">
+        <input type="button" id="downloadBtn" class="cloudyBtn" name="내리기" value="다운로드" style="width: 79; height: 30;">
+        <input type="button" id="newFolderBtn" class="cloudyBtn" name="새폴더" onclick="newFolderPopup()" value="새 폴더" style="width: 66; height: 30;">
+        <input type="button" id="deleteBtn" class="cloudyBtn" name="삭제" onclick="deleteSelectedPopup()" value="선택 항목 삭제" style="width: 112; height: 30">
       </div>
       <div class="file">
         <div class="fileV">
@@ -77,14 +77,19 @@
         </div>
         <div class="filelist" id="listChanger"></div>
       </div>
-      <div class="popup" style="display:none">
+      <div class="popup">
         <div class="deletePopup">
-            <div style="position: relative;">
-                <span class="Xbutton">X </span>
+            <div class="popupRelative">
+                <span class="Xbutton" onclick="closePopup()">X </span>
+            </div>
+            파일/폴더 (파일명) 을(를) 삭제합니다.
+            <div class="popupRelative" style="text-align:right;bottom:0px">
+              <button type="button" onclick="button">가즈아아아아아아</button>
             </div>
         </div>
       </div>
     </div>
+    <iframe id="downloader" src="" style="display:none; visibility:hidden;"></iframe>
     <script>
       window.onload = function () {
         listSetter(root)
@@ -100,26 +105,56 @@
           data: {folderName: roots},
           success: function (data) {
             var output = '';
-            for (var i = 0; i < data.data.length; i++) {
-              var onclicker
-              switch (data.data[i].type) {
-                case 'dir':
-                  onclicker = `listSetter('file${roots}${data.data[i].name}')`
-                  break
-                case 'png':
-                case 'jpg':
-                case 'jpeg':
-                  onclicker = `showImg('file${i}')`
-                  break
-                default:
-                  onclicker = `fileSelect('file${i}')`
-                  break
+            var trigger = 0;
+            if (root !== '/') {
+              var upperRoot = ''
+              var forcontrol = 1;
+              var currentRootData = root.split('/')
+              console.log(currentRootData)
+              console.log(currentRootData.length-trigger)
+              if (currentRootData[currentRootData.length-1] === '') {
+                forcontrol++;
               }
-              output += `<div class="fileSelector" id="file${i}" onclick="${onclicker}" target="${data.data[i].name}">
-                <div class="fileIcon ${data.data[i].type}"></div>
+              for (var i = 0; i < currentRootData.length-forcontrol; i++) {
+                upperRoot += currentRootData[i]+'/'
+              }
+              output += `<div class="fileSelector" id="file0" onclick="listSetter('${upperRoot}')" target="../">
+                <div class="fileIcon dir"></div>
                 <br>
-                <p class="fileName">${data.data[i].name}</p>
+                <p class="fileName">상위 폴더로</p>
               </div>`
+              trigger++;
+            }
+            var i;
+            for (i = trigger; i < data.data.length+trigger; i++) {
+              if (data.data[i-trigger].type === 'dir') {
+                output += `<div class="fileSelector" id="file${i}" onclick="listSetter('${roots}${data.data[i-trigger].name}/')" target="${data.data[i-trigger].name}">
+                  <div class="fileIcon ${data.data[i-trigger].type}"></div>
+                  <br>
+                  <p class="fileName">${data.data[i-trigger].name}</p>
+                </div>`
+              }
+            }
+            var save = i;
+            for (; i < data.data.length+save; i++) {
+              if (data.data[i-save].type !== 'dir') {
+                var onclicker
+                switch (data.data[i-save].type) {
+                  case 'png':
+                  case 'jpg':
+                  case 'jpeg':
+                    onclicker = `showImg('file${i-save}')`
+                    break
+                  default:
+                    onclicker = `fileSelect('file${i-save}')`
+                    break
+                }
+                output += `<div class="fileSelector" id="file${i-save}" onclick="${onclicker}" target="${data.data[i-save].name}">
+                  <div class="fileIcon ${data.data[i-save].type}"></div>
+                  <br>
+                  <p class="fileName">${data.data[i-save].name}</p>
+                </div>`
+              }
             }
             document.getElementById("listChanger").innerHTML = output;
           }
@@ -145,8 +180,28 @@
         .always(function() {
           console.log("complete");
         });
-
       }
+
+      var downloadClicked = function() {
+        var target = root + document.getElementsByClassName('selectedFile')[0].getAttribute("target");
+        $("#downloader").attr("src","./function/download.php"+"?fileName="+target);
+      }
+
+      document.getElementById("downloadBtn").addEventListener('click', function() {
+        downloadClicked();
+      });
+
+      document.getElementById("uploadBtn").addEventListener('click', function() {
+        uploadPopup();
+      });
+
+      document.getElementById("newFolderBtn").addEventListener('click', function() {
+        newFolderPopup();
+      });
+
+      document.getElementById("deleteBtn").addEventListener('click', function() {
+        deletePopup();
+      });
 
       var pictureDropdownStatement;
       /* When the user clicks on the button,
