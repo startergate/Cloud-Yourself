@@ -289,6 +289,15 @@ a{
     top: 6px;
     right: 6px;
 }
+
+.ftimgstyle{
+    border: 0px;
+    vertical-align: top;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0px 30px 5px 30px;
+}
+
 /*.menubar{
     list-style: none;
     padding-left: 0px;
