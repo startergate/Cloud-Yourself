@@ -338,6 +338,16 @@ a{
   border: 1px solid silver;
 }
 
+.imagePopup {
+  text-align: center;
+  height:100%;
+}
+
+.imagePopupImg {
+  height: 500px;
+  margin: 15vh auto;
+}
+
 .popupRelative {
   position: relative;
 }

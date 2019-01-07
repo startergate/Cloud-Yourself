@@ -146,11 +146,14 @@
             for (; i < data.data.length+save; i++) {
               if (data.data[i-save].type !== 'dir') {
                 var onclicker
+                var additionalStyle = ""
                 switch (data.data[i-save].type) {
                   case 'png':
+                  case 'gif':
                   case 'jpg':
                   case 'jpeg':
                     onclicker = `showImg('file${i}')`
+                    additionalStyle = ` style="background-image:url('./file${root+data.data[i-save].name}')"`
                     break
                   default:
                     onclicker = `fileSelect('file${i}')`
@@ -159,7 +162,7 @@
                 output += `<div class="fileSelector" id="file${i}" target="${data.data[i-save].name}" style="text-align:right;">
                   <input type="checkbox" onclick="fileSelect('file${i}')" style="z-index:99" name="" value="">
                   <div onclick="${onclicker}" style="z-index:98;text-align:center">
-                    <div class="fileIcon ${data.data[i-save].type}"></div>
+                    <div class="fileIcon ${data.data[i-save].type}"${additionalStyle}></div>
                     <br>
                     <p class="fileName">${data.data[i-save].name}</p>
                   </div>
@@ -265,6 +268,19 @@
         popup.style.display="block";
       }
 
+      var showImg = function(fileID) {
+        var directory = root+document.getElementById(fileID).getAttribute('target');
+        console.log();
+        var popup = document.getElementsByClassName("popup")[0]
+        popup.innerHTML = `<div class="imagePopup">
+          <div class="popupRelative">
+              <span class="Xbutton" onclick="closePopup()"></span>
+          </div>
+          <img class="imagePopupImg" src="./file${directory}" alt="">
+        </div>`
+        popup.style.display="block";
+      }
+
       document.getElementById("downloadBtn").addEventListener('click', function() {
         downloadClicked();
       });
@@ -340,7 +356,7 @@
         if (document.getElementById(fileName).getAttribute("checked")) {
           document.getElementById(fileName).removeAttr("checked")
         } else {
-          document.getElementById(fileName).setAttribute("checked")
+          document.getElementById(fileName).setAttribute("checked", true)
         }
       }
     </script>

@@ -83,6 +83,7 @@
         </div>
       </div>
     </div>
+    <iframe id="downloader" src="" style="display:none; visibility:hidden;"></iframe>
     <script>
       window.onload = function () {
         listSetter(root)
@@ -208,7 +209,7 @@
         if (document.getElementById(fileName).getAttribute("checked")) {
           document.getElementById(fileName).removeAttr("checked")
         } else {
-          document.getElementById(fileName).setAttribute("checked")
+          document.getElementById(fileName).setAttribute("checked", true)
         }
       }
     </script>
