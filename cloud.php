@@ -27,7 +27,7 @@
           <a class="gnb-my" href="javascript:;" onclick="gnbUserLayer.click.Toggle(); return false">
             <img id="gnb-profile-img" src="<?=$profileImg?>" alt="내 프로필 이미지" style="display: line-block;" width="25" height="25">
             <span id="gnb-profile-filter-mask" class="filter-mask" style="display: inline-block;"></span>
-            <span id ="gnb-name1" class="gnb-name" style="font-size: 15spx; color: white"><?=$_SESSION['nickname']?></span>
+            <span id ="gnb-name1" class="gnb-name" style="font-size: 15px; color: white"><?=$_SESSION['nickname']?></span>
             <em class="blind" style="display: none;">내정보 보기</em>
           </a>
         </div>
