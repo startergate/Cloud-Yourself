@@ -68,7 +68,7 @@
         <input type="button" id="uploadBtn" class="cloudyBtn" name="올리기" onclick="uploadPopup()" value="업로드" style="width: 63; height: 30;">
         <input type="button" id="downloadBtn" class="cloudyBtn" name="내리기" value="다운로드" style="width: 79; height: 30;">
         <input type="button" id="newFolderBtn" class="cloudyBtn" name="새폴더" onclick="newFolderPopup()" value="새 폴더" style="width: 66; height: 30;">
-        <input type="button" id="deleteBtn" class="cloudyBtn" name="삭제" onclick="deleteSelectedPopup()" value="선택 항목 삭제" style="width: 112; height: 30">
+        <input type="button" id="deleteBtn" class="cloudyBtn" name="삭제" value="선택 항목 삭제" style="width: 112; height: 30">
       </div>
       <div class="file">
         <div class="fileV">
@@ -77,17 +77,7 @@
         </div>
         <div class="filelist" id="listChanger"></div>
       </div>
-      <div class="popup">
-        <div class="popupInside deletePopup">
-            <div class="popupRelative">
-                <span class="Xbutton" onclick="closePopup()"></span>
-            </div>
-            <span class="popupHeader">파일/폴더 (파일명) 을(를) 삭제합니다.</span>
-            <div class="popupRelative" style="text-align:right;bottom:0px;position:absolute;width:100%">
-              <button type="button" class="cloudyBtn" onclick="button" style="margin: 20px 20px">가즈아아아아아아</button>
-            </div>
-        </div>
-      </div>
+      <div class="popup" style="display:none"></div>
     </div>
     <iframe id="downloader" src="" style="display:none; visibility:hidden;"></iframe>
     <script>
@@ -143,13 +133,13 @@
                   case 'png':
                   case 'jpg':
                   case 'jpeg':
-                    onclicker = `showImg('file${i-save}')`
+                    onclicker = `showImg('file${i}')`
                     break
                   default:
-                    onclicker = `fileSelect('file${i-save}')`
+                    onclicker = `fileSelect('file${i}')`
                     break
                 }
-                output += `<div class="fileSelector" id="file${i-save}" onclick="${onclicker}" target="${data.data[i-save].name}">
+                output += `<div class="fileSelector" id="file${i}" onclick="${onclicker}" target="${data.data[i-save].name}">
                   <div class="fileIcon ${data.data[i-save].type}"></div>
                   <br>
                   <p class="fileName">${data.data[i-save].name}</p>
@@ -182,9 +172,58 @@
         });
       }
 
+      var deleteExecute = function(file) {
+        $.ajax({
+          url: './function/deleteObject.php',
+          type: 'POST',
+          dataType: 'json',
+          data: {folderName: file},
+          success: function(data) {
+            if (data.result === 1) {
+              listSetter(root)
+              closePopup()
+            }
+          }
+        })
+        .done(function() {
+          console.log("success");
+        })
+        .fail(function() {
+          console.log("error");
+        })
+        .always(function() {
+          console.log("complete");
+        });
+
+      }
+
       var downloadClicked = function() {
         var target = root + document.getElementsByClassName('selectedFile')[0].getAttribute("target");
         $("#downloader").attr("src","./function/download.php"+"?fileName="+target);
+      }
+
+      var deletePopup = function() {
+        var selected = document.getElementsByClassName('selectedFile')[0]
+
+        var popup = document.getElementsByClassName("popup")[0]
+
+        var filefolder
+        var tester = document.getElementsByClassName('selectedFile')[0].getAttribute("target").split(".")
+        if (tester[tester.length-1] === "dir") {
+          filefolder = '폴더'
+        } else {
+          filefolder = '파일'
+        }
+        popup.innerHTML = `<div class="popupInside deletePopup">
+            <div class="popupRelative">
+                <span class="Xbutton" onclick="closePopup()"></span>
+            </div>
+            <span class="popupHeader">${filefolder} ${selected.getAttribute("target")} 을(를) 삭제합니다.</span>
+            <div class="popupRelative" style="text-align:right;bottom:0px;position:absolute;width:100%">
+              <button type="button" class="cloudyBtn" onclick="deleteExecute('${root+selected.getAttribute("target")}')" style="margin: 20px 20px">가즈아아아아아아</button>
+            </div>
+        </div>`
+        popup.style.display="block";
       }
 
       document.getElementById("downloadBtn").addEventListener('click', function() {

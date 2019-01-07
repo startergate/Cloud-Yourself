@@ -1,6 +1,6 @@
 <?php
   header('Content-Type: application/json');
-  $dir = '../file/'.$_POST['folderName'];
+  $dir = '../file'.$_POST['folderName'];
 
   try {
       (is_dir($dir)) ? delTree($dir) : unlink($dir);
