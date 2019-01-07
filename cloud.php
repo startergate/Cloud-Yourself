@@ -58,10 +58,10 @@
         <div class="dropdown">
           <p onclick="myFunction()" class="dropbtn" style="font-size: 25px;">사진</p>
           <div id="myDropdown" class="dropdown-content">
-            <a href="#" style="font-size: 15px;">모든사진</a>
+            <a href="#" style="font-size: 15px;">모든 사진</a>
             <a href="#" style="font-size: 15px;">폴더</a>
           </div>
-          <p class="dropbtn" style="font-size: 25px;">문서</p>
+          <p class="dropbtn" style="font-size: 25px;"><a href="" style="text-decoration:none;color:black">파일</a></p>
         </div>
       </div>
       <div class="optionSelector whiteBack">
@@ -118,10 +118,13 @@
             var i;
             for (i = trigger; i < data.data.length+trigger; i++) {
               if (data.data[i-trigger].type === 'dir') {
-                output += `<div class="fileSelector" id="file${i}" onclick="listSetter('${roots}${data.data[i-trigger].name}/')" target="${data.data[i-trigger].name}">
-                  <div class="fileIcon ${data.data[i-trigger].type}"></div>
-                  <br>
-                  <p class="fileName">${data.data[i-trigger].name}</p>
+                output += `<div class="fileSelector" id="file${i}" target="${data.data[i-trigger].name}">
+                  <input type="checkbox" onclick="fileSelect('file${i}')" style="z-index:99" name="" value="">
+                  <div onclick="listSetter('${roots}${data.data[i-trigger].name}/')" style="z-index:98">
+                    <div class="fileIcon ${data.data[i-trigger].type}"></div>
+                    <br>
+                    <p class="fileName">${data.data[i-trigger].name}</p>
+                  </div>
                 </div>`
               }
             }
@@ -139,10 +142,13 @@
                     onclicker = `fileSelect('file${i}')`
                     break
                 }
-                output += `<div class="fileSelector" id="file${i}" onclick="${onclicker}" target="${data.data[i-save].name}">
-                  <div class="fileIcon ${data.data[i-save].type}"></div>
-                  <br>
-                  <p class="fileName">${data.data[i-save].name}</p>
+                output += `<div class="fileSelector" id="file${i}" target="${data.data[i-save].name}" style="text-align:right;">
+                  <input type="checkbox" onclick="fileSelect('file${i}')" style="z-index:99" name="" value="">
+                  <div onclick="${onclicker}" style="z-index:98;text-align:center">
+                    <div class="fileIcon ${data.data[i-save].type}"></div>
+                    <br>
+                    <p class="fileName">${data.data[i-save].name}</p>
+                  </div>
                 </div>`
               }
             }
@@ -333,6 +339,11 @@
 
       var fileSelect = function(fileName) {
         document.getElementById(fileName).classList.toggle("selectedFile");
+        if (document.getElementById(fileName).getAttribute("checked")) {
+          document.getElementById(fileName).removeAttr("checked")
+        } else {
+          document.getElementById(fileName).setAttribute("checked")
+        }
       }
     </script>
     <script src="./lib/jquery-3.3.1.min.js"></script>
