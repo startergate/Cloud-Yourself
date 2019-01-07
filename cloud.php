@@ -151,14 +151,17 @@
         });
       }
 
-      var folderAdder = function(dir, name) {
+      var folderAdder = function() {
+        var name = document.getElementById("newFolderNamePopup").value
+        if (name === "") name = "새 폴더"
         $.ajax({
           url: './function/newFolder.php',
           type: 'POST',
           dataType: 'json',
-          data: {folderName: dir+name},
+          data: {folderName: root+name},
           success: function (data) {
-            console.log(data);
+            listSetter(root)
+            closePopup()
           }
         })
         .done(function() {
@@ -222,6 +225,38 @@
             <div class="popupRelative" style="text-align:right;bottom:0px;position:absolute;width:100%">
               <button type="button" class="cloudyBtn" onclick="deleteExecute('${root+selected.getAttribute("target")}')" style="margin: 20px 20px">가즈아아아아아아</button>
             </div>
+        </div>`
+        popup.style.display="block";
+      }
+
+      var newFolderPopup = function() {
+        var popup = document.getElementsByClassName("popup")[0]
+
+        popup.innerHTML = `<div class="popupInside newfolderPopup">
+          <div class="popupRelative">
+            <span class="Xbutton" onclick="closePopup()"></span>
+          </div>
+          <span class="popupHeader">생성할 폴더의 이름을 입력하세요.</span>
+          <input type="text" placeholder="이름 입력" name="" id='newFolderNamePopup' class="folderPopupInput" value="">
+          <div class="popupRelative" style="text-align:right;bottom:0px;position:absolute;width:100%">
+            <button type="button" class="cloudyBtn" onclick="folderAdder('${root}')" style="margin: 20px 20px">가즈아아아아아아</button>
+          </div>
+        </div>`
+        popup.style.display="block";
+      }
+
+      var uploadPopup = function() {
+        var popup = document.getElementsByClassName("popup")[0]
+
+        popup.innerHTML = `<div class="popupInside newfolderPopup">
+          <div class="popupRelative">
+            <span class="Xbutton" onclick="closePopup()"></span>
+          </div>
+          <span class="popupHeader">파일을 업로드하세요.</span>
+          <input type="file" name="" id='fileUploadInputPopup' class="filePopupInput" value="">
+          <div class="popupRelative" style="text-align:right;bottom:0px;position:absolute;width:100%">
+            <button type="button" class="cloudyBtn" onclick="fileUploader('${root}')" style="margin: 20px 20px">가즈아아아아아아</button>
+          </div>
         </div>`
         popup.style.display="block";
       }

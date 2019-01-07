@@ -315,8 +315,27 @@ a{
   margin: 10px 15px;
 }
 .deletePopup {
-    width: 400px;
+  width: 400px;
+}
 
+.newfolderPopup {
+  width: 350px;
+}
+
+.folderPopupInput {
+  width: 300px;
+  margin: 35px 25px;
+  padding: 5px;
+  border-radius: 10px;
+  border: 1px solid silver;
+}
+
+.filePopupInput {
+  width: 300px;
+  margin: 35px 25px;
+  padding: 5px;
+  border-radius: 10px;
+  border: 1px solid silver;
 }
 
 .popupRelative {
