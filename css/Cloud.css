@@ -234,9 +234,17 @@ a{
     margin: 1px;
 }
 
-.fileName {
+.fileV {
     margin-top: 0px;
     margin-bottom: 10px;
+    margin-left: 40px;
+    font-size: 30px;
+}
+
+.root {
+  font-size: 15px;
+  margin-left: 15px;
+  color: silver;
 }
 
 .fileIcon {

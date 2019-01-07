@@ -44,7 +44,7 @@
             <p class="gnb-cont">
               <span>asdfasdf</span>
             </p>
-            <a id="gnb-text-logout"class="gnb-log-button">
+            <a id="gnb-text-logout" class="gnb-log-button">
               <span class="gnb-logout-text">로그아웃</span>
             </a>
           </div>
@@ -71,7 +71,7 @@
         <input type="button" id="deleteBtn" name="삭제" value="삭제" style="width: 63; height: 30">
       </div>
       <div class="file">
-        <div class="filename">
+        <div class="fileV">
           <p>파일<span class="root"></span></p>
 
         </div>
@@ -83,25 +83,39 @@
                 <span class="Xbutton">X </span>
             </div>
         </div>
-    </div>
+      </div>
     </div>
     <script>
       window.onload = function () {
         listSetter(root)
       }
 
-      var listSetter = function (dir) {
-        root = dir
-        document.getElementsByClassName("root")[0].innerHTML = '/'+dir;
+      var listSetter = function (roots) {
+        root = roots
+        document.getElementsByClassName("root")[0].innerHTML = roots;
         $.ajax({
           url: './function/getFileList.php',
           type: 'POST',
           dataType: 'json',
-          data: {folderName: dir},
+          data: {folderName: roots},
           success: function (data) {
             var output = '';
             for (var i = 0; i < data.data.length; i++) {
-              output += `<div class="fileSelector" id="file${i}" onclick="fileSelect('file${i}')" target="${data.data[i].name}">
+              var onclicker
+              switch (data.data[i].type) {
+                case 'dir':
+                  onclicker = `listSetter('file${roots}${data.data[i].name}')`
+                  break
+                case 'png':
+                case 'jpg':
+                case 'jpeg':
+                  onclicker = `showImg('file${i}')`
+                  break
+                default:
+                  onclicker = `fileSelect('file${i}')`
+                  break
+              }
+              output += `<div class="fileSelector" id="file${i}" onclick="${onclicker}" target="${data.data[i].name}">
                 <div class="fileIcon ${data.data[i].type}"></div>
                 <br>
                 <p class="fileName">${data.data[i].name}</p>
