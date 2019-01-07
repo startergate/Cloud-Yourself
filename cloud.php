@@ -19,7 +19,7 @@
     <div class="bar">
       <h1>
         <a class="Cloudy" href="cloud.php">
-          <span class="blind"><img class="indexImage" src="./static/img/common/cloudy_logo.png" alt=""><span class="titleText">Cloudy</span></span>
+          <span class="blind"><img class="indexImage" src="./static/img/common/cloudy_logo.png" alt="Cloudy"></span>
         </a>
       </h1>
       <li id = "gnb-my-layer"  class="gnb-my-li, profile" style="display: inline-block;">
@@ -78,13 +78,13 @@
         <div class="filelist" id="listChanger"></div>
       </div>
       <div class="popup">
-        <div class="deletePopup">
+        <div class="popupInside deletePopup">
             <div class="popupRelative">
-                <span class="Xbutton" onclick="closePopup()">X </span>
+                <span class="Xbutton" onclick="closePopup()"></span>
             </div>
-            파일/폴더 (파일명) 을(를) 삭제합니다.
-            <div class="popupRelative" style="text-align:right;bottom:0px">
-              <button type="button" onclick="button">가즈아아아아아아</button>
+            <span class="popupHeader">파일/폴더 (파일명) 을(를) 삭제합니다.</span>
+            <div class="popupRelative" style="text-align:right;bottom:0px;position:absolute;width:100%">
+              <button type="button" class="cloudyBtn" onclick="button" style="margin: 20px 20px">가즈아아아아아아</button>
             </div>
         </div>
       </div>
@@ -202,6 +202,12 @@
       document.getElementById("deleteBtn").addEventListener('click', function() {
         deletePopup();
       });
+
+      var closePopup = function() {
+        var popup = document.getElementsByClassName("popup")[0]
+        popup.innerHTML = ""
+        popup.style.display="none"
+      }
 
       var pictureDropdownStatement;
       /* When the user clicks on the button,

@@ -109,12 +109,6 @@ a {
     padding-bottom:5px;
 }
 
-.titleText {
-  display:inline-block;
-  margin-top: -30px;
-  margin-left: 10px;
-}
-
 a{
     text-decoration: none;
 }
@@ -307,12 +301,21 @@ a{
     border: solid 1px black;
     margin: -1px;
 }
+.popupInside {
+  border: 1px solid silver;
+  border-radius: 10px;
+  height: 180px;
+  z-index: 9999999;
+  background-color: white;
+  margin: 25vh auto;
+  position:relative;
+}
+.popupHeader {
+  display: inline-block;
+  margin: 10px 15px;
+}
 .deletePopup {
-    width: 300px;
-    height: 180px;
-    z-index: 9999999;
-    background-color: white;
-    margin: 25vh auto;
+    width: 400px;
 
 }
 
@@ -322,8 +325,12 @@ a{
 
 .Xbutton {
     position: absolute;
-    top: 6px;
-    right: 6px;
+    width: 32px;
+    height: 32px;
+    display: inline-block;
+    top: 10px;
+    right: 15px;
+    background-image: url('../static/img/common/cancel.png')
 }
 
 .ftimgstyle{

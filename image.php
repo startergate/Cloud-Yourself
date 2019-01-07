@@ -104,6 +104,7 @@
             var output = '';
             for (var i = 0; i < data.data.length; i++) {
               var onclicker
+              var imgBackground;
               switch (data.data[i].type) {
                 case 'dir':
                   onclicker = `listSetter('file${roots}${data.data[i].name}')`
