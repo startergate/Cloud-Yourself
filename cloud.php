@@ -73,8 +73,8 @@
         <div class="dropdown">
           <p onclick="myFunction()" class="dropbtn" style="font-size: 25px;">사진</p>
           <div id="myDropdown" class="dropdown-content">
-            <a href="#" style="font-size: 15px;">모든 사진</a>
-            <a href="#" style="font-size: 15px;">폴더</a>
+            <a href="./image.php" style="font-size: 15px;">모든 사진</a>
+            <a href="#" onclick="alert('지원 예정')"style="font-size: 15px;">폴더</a>
           </div>
           <p class="dropbtn" style="font-size: 25px;"><a href="" style="text-decoration:none;color:black">파일</a></p>
         </div>
@@ -122,7 +122,7 @@
               for (var i = 0; i < currentRootData.length-forcontrol; i++) {
                 upperRoot += currentRootData[i]+'/'
               }
-              output += `<div class="fileSelector" id="file0" onclick="listSetter('${upperRoot}')" target="../">
+              output += `<div class="fileSelector" id="file0" onclick="listSetter('${upperRoot}')" target="../" style="margin-top:19px;">
                 <div class="fileIcon dir"></div>
                 <br>
                 <p class="fileName">상위 폴더로</p>
@@ -132,9 +132,9 @@
             var i;
             for (i = trigger; i < data.data.length+trigger; i++) {
               if (data.data[i-trigger].type === 'dir') {
-                output += `<div class="fileSelector" id="file${i}" target="${data.data[i-save].name}" style="text-align:right;">
+                output += `<div class="fileSelector" id="file${i}" target="${data.data[i-trigger].name}" style="text-align:right;">
                   <input type="checkbox" onclick="fileSelect('file${i}')" style="z-index:99" name="" value="">
-                  <div onclick="listSetter('${roots}${data.data[i-trigger].name}/')" style="z-index:98">
+                  <div onclick="listSetter('${roots}${data.data[i-trigger].name}/')" style="z-index:98;text-align:center">
                     <div class="fileIcon ${data.data[i-trigger].type}"></div>
                     <br>
                     <p class="fileName">${data.data[i-trigger].name}</p>

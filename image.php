@@ -58,24 +58,20 @@
         <div class="dropdown">
           <p onclick="myFunction()" class="dropbtn" style="font-size: 25px;">사진</p>
           <div id="myDropdown" class="dropdown-content">
-            <a href="#" style="font-size: 15px;">모든사진</a>
-            <a href="#" style="font-size: 15px;">폴더</a>
+            <a href="./image.php" style="font-size: 15px;">모든 사진</a>
+            <a href="#" onclick="alert('지원 예정')"style="font-size: 15px;">폴더</a>
           </div>
-          <p class="dropbtn" style="font-size: 25px;">문서</p>
+          <p class="dropbtn" style="font-size: 25px;"><a href="./cloud.php" style="text-decoration:none;color:black">파일</a></p>
         </div>
       </div>
       <div class="optionSelector whiteBack">
-        <input type="checkbox" id="allCheckbox" name="chk_info" value="All check" style="width:15px; height:15px;">
-        <input type="button" id="uploadBtn" name="올리기" value="올리기" style="width: 63; height: 30;">
-        <input type="button" id="downloadBtn" name="내리기" value="내려받기"style="width: 79; height: 30;">
-        <input type="button" id="deleteBtn" name="삭제" value="삭제" style="width: 63; height: 30">
+        <input type="button" id="downloadBtn" class="cloudyBtn" name="내리기" value="다운로드" style="width: 79; height: 30;">
+        <input type="button" id="deleteBtn" class="cloudyBtn" name="삭제" value="선택 항목 삭제" style="width: 112; height: 30">
       </div>
       <div class="file">
         <div class="fileV">
           <p><strong>사진<span class="root"></span></p>
-            <div class="ftimgstyle">
-                <img src="https://lh3.googleusercontent.com/9MeehakhUNFgmdb0f9EQE3ChJGUaCOPrcJfM4qpwmpy940iXo5hnEa6FWu1pAzjA4c2KIqAG5gzm4vVYpuz74qieAOV4mPo=s688" style="margin-left: -1px; margin-top: 0px; width:263px; height: 168px;">
-            </div>
+
         </div>
         <div class="filelist" id="listChanger"></div>
       </div>
@@ -93,64 +89,70 @@
       }
 
       var listSetter = function (roots) {
-        root = roots
-        document.getElementsByClassName("root")[0].innerHTML = roots;
         $.ajax({
-          url: './function/getFileList.php',
+            url: './function/getAllImage.php',
           type: 'POST',
           dataType: 'json',
-          data: {folderName: roots},
+          data: {},
           success: function (data) {
             var output = '';
             for (var i = 0; i < data.data.length; i++) {
-              var onclicker
-              var imgBackground;
-              switch (data.data[i].type) {
-                case 'dir':
-                  onclicker = `listSetter('file${roots}${data.data[i].name}')`
-                  console.log(onclicker)
-                  break
-                case 'png':
-                case 'jpg':
-                case 'jpeg':
-                  onclicker = `showImg('file${i}')`
-                  console.log(onclicker)
-                  break
-                default:
-                  onclicker = `fileSelect('file${i}')`
-                  break
-              }
-              output += `<div class="fileSelector" id="file${i}" onclick="${onclicker}" target="${data.data[i].name}">
-                <div class="fileIcon ${data.data[i].type}"></div>
-                <br>
-                <p class="fileName">${data.data[i].name}</p>
-              </div>`
+              output += `<div><img class="cloudyImagePrinter" id="image${i}" onclick="fileSelect('image${i}')" src="./file${data.data[i].root}" target="${data.data[i].root}" alt=""></div>`
             }
             document.getElementById("listChanger").innerHTML = output;
           }
         });
       }
 
-      var folderAdder = function(dir, name) {
+      var deleteExecute = function(file) {
         $.ajax({
-          url: './function/newFolder.php',
+          url: './function/deleteObject.php',
           type: 'POST',
           dataType: 'json',
-          data: {folderName: dir+name},
-          success: function (data) {
-            console.log(data);
+          data: {folderName: file},
+          success: function(data) {
+            if (data.result === 1) {
+              listSetter(root)
+              closePopup()
+            }
           }
-        })
-        .done(function() {
-          console.log("success");
-        })
-        .fail(function() {
-          console.log("error");
-        })
-        .always(function() {
-          console.log("complete");
         });
+      }
 
+      var downloadClicked = function() {
+        var target = root + document.getElementsByClassName('cloudyImageSelected')[0].getAttribute("target");
+        $("#downloader").attr("src","./function/download.php"+"?fileName="+target);
+      }
+
+      var deletePopup = function() {
+        var selected = document.getElementsByClassName('cloudyImageSelected')[0]
+
+        var popup = document.getElementsByClassName("popup")[0]
+
+        popup.innerHTML = `<div class="popupInside deletePopup">
+            <div class="popupRelative">
+                <span class="Xbutton" onclick="closePopup()"></span>
+            </div>
+            <span class="popupHeader">사진 ${selected.getAttribute("target")} 을(를) 삭제합니다.</span>
+            <div class="popupRelative" style="text-align:right;bottom:0px;position:absolute;width:100%">
+              <button type="button" class="cloudyBtn" onclick="deleteExecute('${root+selected.getAttribute("target")}')" style="margin: 20px 20px">가즈아아아아아아</button>
+            </div>
+        </div>`
+        popup.style.display="block";
+      }
+
+      document.getElementById("downloadBtn").addEventListener('click', function() {
+        downloadClicked();
+      });
+
+      document.getElementById("deleteBtn").addEventListener('click', function() {
+        deletePopup();
+      });
+
+      var closePopup = function() {
+        var popup = document.getElementsByClassName("popup")[0]
+        popup.innerHTML = ""
+        popup.style.display="none"
       }
 
       var pictureDropdownStatement;
@@ -202,7 +204,12 @@
       }
 
       var fileSelect = function(fileName) {
-        document.getElementById(fileName).classList.toggle("selectedFile");
+        document.getElementById(fileName).classList.toggle("cloudyImageSelected");
+        if (document.getElementById(fileName).getAttribute("checked")) {
+          document.getElementById(fileName).removeAttr("checked")
+        } else {
+          document.getElementById(fileName).setAttribute("checked")
+        }
       }
     </script>
     <script src="./lib/jquery-3.3.1.min.js"></script>
