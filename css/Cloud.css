@@ -265,20 +265,6 @@ a{
   margin-bottom: 10px;
 }
 
-.fileIcon {
-    margin: 0 auto;
-    height: 90px;
-    width: 120px;
-    background-image: url("https://marketplace.canva.com/MAB7OE9Jppw/1/thumbnail_large/canva-folder-file-yellow-document-info-icon.-vector-graphic-MAB7OE9Jppw.png");
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size:contain;
-}
-
-.dir {
-  background-image: url("https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/foldericons/folder-large_frontplate_thumbnail.svg");
-}
-
 .selectedFile {
     background-color: #DCDCDC !important;
     border: 2px solid #2f4798 !important;
@@ -398,3 +384,95 @@ a{
 /*.menubar li:hover ul{
     display: block;
 }*/
+
+
+
+
+
+
+
+.fileIcon {
+    margin: 0 auto;
+    height: 90px;
+    width: 120px;
+    background-image: url("../static/img/common/fileicon/file.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size:contain;
+}
+
+.dir {
+  background-image: url("../static/img/common/fileicon/folder.png");
+}
+
+.ai {
+  background-image: url("../static/img/common/fileicon/AI.png");
+}
+
+.bms {
+  background-image: url("../static/img/common/fileicon/BMS.png");
+}
+
+.bz2 {
+  background-image: url("../static/img/common/fileicon/BZ2.png");
+}
+
+.c {
+  background-image: url("../static/img/common/fileicon/c.png");
+}
+
+.hwp {
+  background-image: url("../static/img/common/fileicon/HWP.png");
+}
+
+.ico {
+  background-image: url("../static/img/common/fileicon/ICO.png");
+}
+
+.idx {
+  background-image: url("../static/img/common/fileicon/IDX.png");
+}
+
+.java {
+  background-image: url("../static/img/common/fileicon/java.png");
+}
+
+.lnk {
+  background-image: url("../static/img/common/fileicon/LNK.png");
+}
+
+.mid {
+  background-image: url("../static/img/common/fileicon/MID.png");
+}
+
+.mp4 {
+  background-image: url("../static/img/common/fileicon/MP4.png");
+}
+
+.old {
+  background-image: url("../static/img/common/fileicon/OLD.png");
+}
+
+.php {
+  background-image: url("../static/img/common/fileicon/PHP.png");
+}
+
+.psd {
+  background-image: url("../static/img/common/fileicon/PSD.png");
+}
+
+.py {
+  background-image: url("../static/img/common/fileicon/py.png");
+}
+
+.sav {
+  background-image: url("../static/img/common/fileicon/SAV.png");
+}
+
+.srt {
+  background-image: url("../static/img/common/fileicon/SRT.png");
+}
+
+.txt {
+  background-image: url("../static/img/common/fileicon/TXT.png");
+}
