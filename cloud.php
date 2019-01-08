@@ -152,6 +152,7 @@
                   case 'gif':
                   case 'jpg':
                   case 'jpeg':
+                  case 'bmp':
                     onclicker = `showImg('file${i}')`
                     additionalStyle = ` style="background-image:url('./file${root+data.data[i-save].name}')"`
                     break

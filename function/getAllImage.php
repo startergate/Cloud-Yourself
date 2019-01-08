@@ -18,7 +18,7 @@
             // 파일인 경우만 목록에 추가한다.
             if (is_file($dir . "/" . $filename)) {
                 $temp = ['name'=>$filename, 'type'=>explode('.', $filename)[count(explode('.', $filename))-1], 'root'=>"/".$filename];
-                if ($temp['type'] === 'png' || $temp['type'] === 'jpg' || $temp['type'] === 'gif' || $temp['type'] === 'jpeg' || $temp['type'] === 'png') {
+                if ($temp['type'] === 'png' || $temp['type'] === 'jpg' || $temp['type'] === 'gif' || $temp['type'] === 'jpeg' || $temp['type'] === 'png' || $temp['type'] === 'bmp') {
                     $files[] = $temp;
                 }
             } else {

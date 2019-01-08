@@ -405,8 +405,28 @@ a{
   background-image: url("../static/img/common/fileicon/folder.png");
 }
 
+.\7z {
+  background-image: url("../static/img/common/fileicon/7Z.png");
+}
+
+.aac {
+  background-image: url("../static/img/common/fileicon/AAC.png");
+}
+
+.apk {
+  background-image: url("../static/img/common/fileicon/APK.png");
+}
+
 .ai {
   background-image: url("../static/img/common/fileicon/AI.png");
+}
+
+.avi {
+  background-image: url("../static/img/common/fileicon/AAC.png");
+}
+
+.bat {
+  background-image: url("../static/img/common/fileicon/BAT.png");
 }
 
 .bms {
@@ -419,6 +439,46 @@ a{
 
 .c {
   background-image: url("../static/img/common/fileicon/c.png");
+}
+
+.cc {
+  background-image: url("../static/img/common/fileicon/cpp.png");
+}
+
+.cpp {
+  background-image: url("../static/img/common/fileicon/cpp.png");
+}
+
+.cs {
+  background-image: url("../static/img/common/fileicon/cs.png");
+}
+
+.css {
+  background-image: url("../static/img/common/fileicon/CSS.png");
+}
+
+.dll {
+  background-image: url("../static/img/common/fileicon/BAT.png");
+}
+
+.doc {
+  background-image: url("../static/img/common/fileicon/DOC.png");
+}
+
+.docx {
+  background-image: url("../static/img/common/fileicon/DOCX.png");
+}
+
+.flac {
+  background-image: url("../static/img/common/fileicon/AAC.png");
+}
+
+.flv {
+  background-image: url("../static/img/common/fileicon/AAC.png");
+}
+
+.html {
+  background-image: url("../static/img/common/fileicon/HTML.png");
 }
 
 .hwp {
@@ -445,6 +505,10 @@ a{
   background-image: url("../static/img/common/fileicon/MID.png");
 }
 
+.mp3 {
+  background-image: url("../static/img/common/fileicon/AAC.png");
+}
+
 .mp4 {
   background-image: url("../static/img/common/fileicon/MP4.png");
 }
@@ -453,8 +517,36 @@ a{
   background-image: url("../static/img/common/fileicon/OLD.png");
 }
 
+.osk {
+  background-image: url("../static/img/common/fileicon/OSU.png");
+}
+
+.osu {
+  background-image: url("../static/img/common/fileicon/OSU.png");
+}
+
+.osz {
+  background-image: url("../static/img/common/fileicon/OSU.png");
+}
+
+.otf {
+  background-image: url("../static/img/common/fileicon/OTF.png");
+}
+
+.pdf {
+  background-image: url("../static/img/common/fileicon/PDF.png");
+}
+
 .php {
   background-image: url("../static/img/common/fileicon/PHP.png");
+}
+
+.ppt {
+  background-image: url("../static/img/common/fileicon/PPT.png");
+}
+
+.pptx {
+  background-image: url("../static/img/common/fileicon/PPT.png");
 }
 
 .psd {
@@ -473,6 +565,30 @@ a{
   background-image: url("../static/img/common/fileicon/SRT.png");
 }
 
+.wav {
+  background-image: url("../static/img/common/fileicon/AAC.png");
+}
+
+.wma {
+  background-image: url("../static/img/common/fileicon/AAC.png");
+}
+
+.wmv {
+  background-image: url("../static/img/common/fileicon/AAC.png");
+}
+
+.woff {
+  background-image: url("../static/img/common/fileicon/OTF.png");
+}
+
+.woff2 {
+  background-image: url("../static/img/common/fileicon/OTF.png");
+}
+
 .txt {
   background-image: url("../static/img/common/fileicon/TXT.png");
+}
+
+.ttf {
+  background-image: url("../static/img/common/fileicon/OTF.png");
 }
