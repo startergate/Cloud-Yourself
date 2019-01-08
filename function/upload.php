@@ -25,6 +25,7 @@
 
   // 파일 이동
   move_uploaded_file($_FILES['tfile']['tmp_name'], $uploads_dir.$name);
+  chmod($uploads_dir.$name, 0777);
 
   echo "<script>window.alert('업로드가 완료되었습니다.');</script>";
   echo "<script>window.location=('../cloud.php?dir=".$_POST['dir']."');</script>";
