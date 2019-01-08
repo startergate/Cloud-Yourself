@@ -228,7 +228,7 @@
             </div>
             <span class="popupHeader">${filefolder} ${selected.getAttribute("target")} 을(를) 삭제합니다.</span>
             <div class="popupRelative" style="text-align:right;bottom:0px;position:absolute;width:100%">
-              <button type="button" class="cloudyBtn" onclick="deleteExecute('${root+selected.getAttribute("target")}')" style="margin: 20px 20px">가즈아아아아아아</button>
+              <button type="button" class="cloudyBtn" onclick="deleteExecute('${root+selected.getAttribute("target")}')" style="margin: 20px 20px">확인</button>
             </div>
         </div>`
         popup.style.display="block";
@@ -244,7 +244,7 @@
           <span class="popupHeader">생성할 폴더의 이름을 입력하세요.</span>
           <input type="text" placeholder="이름 입력" name="" id='newFolderNamePopup' class="folderPopupInput" value="">
           <div class="popupRelative" style="text-align:right;bottom:0px;position:absolute;width:100%">
-            <button type="button" class="cloudyBtn" onclick="folderAdder('${root}')" style="margin: 20px 20px">가즈아아아아아아</button>
+            <button type="button" class="cloudyBtn" onclick="folderAdder('${root}')" style="margin: 20px 20px">확인</button>
           </div>
         </div>`
         popup.style.display="block";
@@ -262,7 +262,7 @@
             <input type="hidden" name="dir" value="${root}">
             <input type="file" name="tfile" id='fileUploadInputPopup' class="filePopupInput" value="">
             <div class="popupRelative" style="text-align:right;bottom:0px;position:absolute;width:100%">
-              <button class="cloudyBtn" style="margin: 20px 20px">가즈아아아아아아</button>
+              <button class="cloudyBtn" style="margin: 20px 20px">확인</button>
             </div>
           </form>
         </div>`
