@@ -1,17 +1,17 @@
 <?php
     // 폴더명 지정
-    $dir = "../file";
+    $dir = '../file';
 
     $files = [];
     $files = getImages($dir, $files);
     function getImages($dir, $files)
     {
         // 핸들 획득
-        $handle  = opendir($dir);
+        $handle = opendir($dir);
 
         // 디렉터리에 포함된 파일을 저장한다.
         while (false !== ($filename = readdir($handle))) {
-            if ($filename == "." || $filename == "..") {
+            if ($filename == '.' || $filename == '..') {
                 continue;
             }
 
@@ -22,9 +22,10 @@
                     $files[] = $temp;
                 }
             } else {
-                $files = getImages($dir."/".$filename, $files);
+                $files = getImages($dir.'/'.$filename, $files);
             }
         }
+
         return $files;
     }
 
