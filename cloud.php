@@ -74,7 +74,7 @@
           <p onclick="myFunction()" class="dropbtn" style="font-size: 25px;">사진</p>
           <div id="myDropdown" class="dropdown-content">
             <a href="./image.php" style="font-size: 15px;">모든 사진</a>
-            <a href="#" onclick="alert('지원 예정')"style="font-size: 15px;">폴더</a>
+            <a href="#" onclick="alert('DLC $29.99')"style="font-size: 15px;">폴더</a>
           </div>
           <p class="dropbtn" style="font-size: 25px;"><a href="" style="text-decoration:none;color:black">파일</a></p>
         </div>
@@ -149,10 +149,15 @@
                 var additionalStyle = ""
                 switch (data.data[i-save].type) {
                   case 'png':
+                  case 'PNG':
                   case 'gif':
+                  case 'GIF':
                   case 'jpg':
+                  case 'JPG':
                   case 'jpeg':
+                  case 'JPEG':
                   case 'bmp':
+                  case 'BMP':
                     onclicker = `showImg('file${i}')`
                     additionalStyle = ` style="background-image:url('./file${root+data.data[i-save].name}')"`
                     break

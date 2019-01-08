@@ -59,7 +59,7 @@
           <p onclick="myFunction()" class="dropbtn" style="font-size: 25px;">사진</p>
           <div id="myDropdown" class="dropdown-content">
             <a href="./image.php" style="font-size: 15px;">모든 사진</a>
-            <a href="#" onclick="alert('지원 예정')"style="font-size: 15px;">폴더</a>
+            <a href="#" onclick="alert('DLC $29.99')"style="font-size: 15px;">폴더</a>
           </div>
           <p class="dropbtn" style="font-size: 25px;"><a href="./cloud.php" style="text-decoration:none;color:black">파일</a></p>
         </div>
@@ -136,7 +136,7 @@
             </div>
             <span class="popupHeader">사진 ${selected.getAttribute("target")} 을(를) 삭제합니다.</span>
             <div class="popupRelative" style="text-align:right;bottom:0px;position:absolute;width:100%">
-              <button type="button" class="cloudyBtn" onclick="deleteExecute('${root+selected.getAttribute("target")}')" style="margin: 20px 20px">가즈아아아아아아</button>
+              <button type="button" class="cloudyBtn" onclick="deleteExecute('${root+selected.getAttribute("target")}')" style="margin: 20px 20px">확인</button>
             </div>
         </div>`
         popup.style.display="block";
