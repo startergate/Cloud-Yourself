@@ -42,7 +42,7 @@
           header("Content-Length: $filesize");
           header('Cache-Control: must-revalidate, post-check=0, pre-check=0');
           readfile($dir);
-          $fp = fopen($dir, "r");
+          $fp = fopen($dir, 'r');
           fpassthru($fp);
           fclose($fp);
       } catch (\Exception $e) {
