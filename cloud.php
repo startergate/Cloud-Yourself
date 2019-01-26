@@ -265,7 +265,7 @@
           <span class="popupHeader">파일을 업로드하세요.</span>
           <form enctype='multipart/form-data' action='./function/upload.php' method='post'>
             <input type="hidden" name="dir" value="${root}">
-            <input type="file" name="tfile" id='fileUploadInputPopup' class="filePopupInput" value="">
+            <input type="file" name="tfile[]" id='fileUploadInputPopup' class="filePopupInput" multiple>
             <div class="popupRelative" style="text-align:right;bottom:0px;position:absolute;width:100%">
               <button class="cloudyBtn" style="margin: 20px 20px">확인</button>
             </div>
