@@ -33,6 +33,7 @@
               $filename = utf2euc($dir);
           }
 
+          // 구현용 헤더
           header('Pragma: public');
           header('Expires: 0');
           header('Content-Type: application/octet-stream');
